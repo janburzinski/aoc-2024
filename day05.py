@@ -7,8 +7,24 @@ part 1:
 
 rules:
 1. every number must be in the same page numbers to update list
-
 """
+
+
+# sort the data from the given input into two arrays to
+def sort_data(input_data):
+    pages_to_update = []
+    page_update_rules = []
+
+    # sort the data into the two lists
+    for line in input_data:
+        if line.strip() == "":  # skip empty lines
+            continue
+        elif "," in line:  # append lines with "|" => pages to update
+            pages_to_update.append(list(map(int, line.strip().split(","))))
+        elif "|" in line:  # append lines with "," => page update rules
+            page_update_rules.append(list(map(int, line.strip().split("|"))))
+
+    return pages_to_update, page_update_rules
 
 
 # which page updates are already in the right order
@@ -43,6 +59,20 @@ def validate_right_order(page_ordering_rules, page_number_updates):
     return sol
 
 
+def filter_wrong_ordered_updates(page_ordering_rules, page_update_rules):
+    sol = []
+    correct_update_rules = validate_right_order(page_ordering_rules, page_update_rules)
+
+    # loop over the update rules and filter out the correct ones
+    for update_rule in page_update_rules:
+        # check if the update rule is not in the correct update rules array
+        # and add it to the array of wrong updates
+        if update_rule not in correct_update_rules:
+            sol.append(update_rule)
+
+    return sol
+
+
 # add up the middle page numbers
 # !: only pass the valid ones
 def calculate_middle_page_numbers(page_number_updates):
@@ -67,43 +97,30 @@ def calculate_middle_page_numbers(page_number_updates):
     return sol
 
 
-def sort_data(input_data):
-    pages_to_update = []
-    page_update_rules = []
-
-    # sort the data into the two lists
-    for line in input_data:
-        if line.strip() == "":  # skip empty lines
-            continue
-        elif "," in line:  # append lines with "|" => pages to update
-            pages_to_update.append(list(map(int, line.strip().split(","))))
-        elif "|" in line:  # append lines with "," => page update rules
-            page_update_rules.append(list(map(int, line.strip().split("|"))))
-
-    return pages_to_update, page_update_rules
-
-
 def part1(input_data):
     pages_to_update, page_update_rules = sort_data(input_data)
 
     solution_one = validate_right_order(page_ordering_rules=page_update_rules, page_number_updates=pages_to_update)
     print(solution_one)
 
-    return solution_one
-
-
-def part2(input_data, solution_one):
-    pages_to_update, page_update_rules = sort_data(input_data)
-
     solution_two = calculate_middle_page_numbers(solution_one)
     print(solution_two)
 
-    return solution_two
+    return solution_one, solution_two
+
+
+"""
+part 2:
+- only use the incorrectly ordered updates and correct the order
+"""
+
+
+def part2(input_data):
+    return 0
 
 
 if __name__ == "__main__":
     with open("./inputs/day05.txt") as f:
         data = f.read().strip().split("\n")
-    part_one = part1(data)
-    print("Part 1:", part_one)
-    print("Part 2:", part2(input_data=data, solution_one=part_one))
+    print("Part 1:", part1(data))
+    print("Part 2:", part2(data))
