@@ -9,7 +9,7 @@ https://adventofcode.com/2024
 # Progress
 
 - [X] Day 1, Part 1
-    - [ ] Part 2
+    - [X] Part 2
 - [X] Day 2, Part 1
     - [ ] Part 2
 - [X] Day 3, Part 1
