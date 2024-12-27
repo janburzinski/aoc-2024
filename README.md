@@ -15,7 +15,7 @@ https://adventofcode.com/2024
 - [X] Day 3, Part 1
     - [X] Part 2
 - [X] Day 4, Part 1
-    - [ ] Part 2
+    - [X] Part 2
 - [X] Day 5, Part 1
     - [ ] Part 2
 - [X] Day 6, Part 1

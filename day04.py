@@ -1,4 +1,5 @@
 """
+part 1:
 - Word search for the word "XMAS"
 - word can be horizontal, vertical, diagonal, written backwards or overlapping other words
 
@@ -52,9 +53,9 @@ def check_for_mas_cross(input_data, total_lines, total_cols, i, j):
         return False
 
     # diagonal down right
-    diag_1 = f"{input_data[i-1][j-1]}{input_data[i+1][j+1]}"
+    diag_1 = f"{input_data[i - 1][j - 1]}{input_data[i + 1][j + 1]}"
     # diagonal down left
-    diag_2 = f"{input_data[i-1][j+1]}{input_data[i+1][j-1]}"
+    diag_2 = f"{input_data[i - 1][j + 1]}{input_data[i + 1][j - 1]}"
 
     # diagonal should be either MS or SM because they are reversable
     if diag_1 in ["MS", "SM"] and diag_2 in ["MS", "SM"]:
@@ -78,6 +79,26 @@ def part1(input_data):
     return solution
 
 
+"""
+X-MAS:
+- find "MAS" in the shape of an X (cross-shape)
+
+.M.S......
+..A..MSMS.
+.M.S.MAA..
+..A.ASMSM.
+.M.S.M....
+..........
+S.S.S.S.S.
+.A.A.A.A..
+M.M.M.M.M.
+..........
+
+appearances: 9 times
+
+"""
+
+
 def part2(input_data):
     solution = 0
 
@@ -90,6 +111,25 @@ def part2(input_data):
 
     return solution
 
+
+"""
+X-MAS:
+- find "MAS" in the shape of an X (cross-shape)
+
+.M.S......
+..A..MSMS.
+.M.S.MAA..
+..A.ASMSM.
+.M.S.M....
+..........
+S.S.S.S.S.
+.A.A.A.A..
+M.M.M.M.M.
+..........
+
+appearances: 9 times
+
+"""
 
 if __name__ == "__main__":
     with open("./inputs/day04.txt") as f:
