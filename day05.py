@@ -64,7 +64,7 @@ def filter_wrong_ordered_updates(page_ordering_rules, page_update_rules):
     correct_update_rules = validate_right_order(page_ordering_rules, page_update_rules)
 
     # loop over the update rules and filter out the correct ones
-    for update_rule in page_update_rules:
+    for update_rule in page_ordering_rules:
         # check if the update rule is not in the correct update rules array
         # and add it to the array of wrong updates
         if update_rule not in correct_update_rules:
@@ -87,11 +87,11 @@ def calculate_middle_page_numbers(page_number_updates):
     
     """
     # calculate the middle number
-    print(page_number_updates)
+    # print(page_number_updates)
     for i, arr in enumerate(page_number_updates):
         arr_len = len(arr)
         middle_number = arr_len // 2
-        print(f"i {i} {arr};;; {middle_number} {arr[middle_number]}")
+        # print(f"i {i} {arr};;; {middle_number} {arr[middle_number]}")
         sol += arr[middle_number]
 
     return sol
@@ -99,28 +99,12 @@ def calculate_middle_page_numbers(page_number_updates):
 
 def part1(input_data):
     pages_to_update, page_update_rules = sort_data(input_data)
+    solution_one = validate_right_order(page_update_rules, pages_to_update)
 
-    solution_one = validate_right_order(page_ordering_rules=page_update_rules, page_number_updates=pages_to_update)
-    print(solution_one)
-
-    solution_two = calculate_middle_page_numbers(solution_one)
-    print(solution_two)
-
-    return solution_one, solution_two
-
-
-"""
-part 2:
-- only use the incorrectly ordered updates and correct the order
-"""
-
-
-def part2(input_data):
-    return 0
+    return calculate_middle_page_numbers(solution_one)
 
 
 if __name__ == "__main__":
     with open("./inputs/day05.txt") as f:
         data = f.read().strip().split("\n")
     print("Part 1:", part1(data))
-    print("Part 2:", part2(data))
