@@ -48,13 +48,17 @@ def part1(input_data):
 
 """
 part 2:
--
+- just the same but repeat it for 75 times (damn)
 """
 
 
 def part2(input_data):
-    solution = 0
-    return solution
+    sol = calc_num(input_data)
+
+    for _ in range(74):
+        sol = calc_num(" ".join(map(str, sol)))
+
+    return len(sol)
 
 
 if __name__ == "__main__":
