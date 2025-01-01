@@ -18,7 +18,7 @@ def create_day():
     os.makedirs(f"day_{current_day}", exist_ok=True)
 
     # copy temp file and rename it
-    temp_file = Path("temp.py")
+    temp_file = Path("temp_1.py")
     destination_file_p1 = Path(f"day_{current_day}") / f"p1_day_{current_day}.py"
     destination_file_p2 = Path(f"day_{current_day}") / f"p2_day_{current_day}.py"
 
