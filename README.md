@@ -30,7 +30,7 @@ https://adventofcode.com/2024
     - [ ] Part 2
 - [X] Day 11, Part 1
     - [X] Part 2
-- [ ] Day 12, Part 1
+- [X] Day 12, Part 1
     - [ ] Part 2
 - [ ] Day 13, Part 1
     - [ ] Part 2
